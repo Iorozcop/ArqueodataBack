@@ -1,33 +1,45 @@
 package com.arqueodata.ArqueodataBack.models.entity;
 
 import java.io.Serializable;
+import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
+import javax.persistence.JoinColumn;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
 @Table (name="usuarios")
-public class Usuario implements Serializable{
+public class Usuario implements Serializable {
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
+	
+	@Column(nullable = false,unique = true, length=20)
+	private String username;
 	
 	@Column(nullable = false)
-	private String nombre;
-	
-	@Column(nullable = false)
-	private String categoria;
-	
-	@Column(unique = true)
 	private String email;
 	
-	@Column(nullable = false)
-	private String pass;
+	@Column(length=60)
+	private String password;
+	
+	private Boolean enabled;
+	
+	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@JoinTable(name="usuarios_roles", joinColumns= @JoinColumn(name = "usuario_id")
+	, inverseJoinColumns= @JoinColumn(name = "role_id"),
+	uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario_id", "role_id"})})
+	private List<Role> roles;
 	
 	
 	//GETTER AND SETTER
@@ -38,6 +50,30 @@ public class Usuario implements Serializable{
 		return id;
 	}
 	/**
+	 * @return the enabled
+	 */
+	public Boolean getEnabled() {
+		return enabled;
+	}
+	/**
+	 * @param enabled the enabled to set
+	 */
+	public void setEnabled(Boolean enabled) {
+		this.enabled = enabled;
+	}
+	/**
+	 * @return the roles
+	 */
+	public List<Role> getRoles() {
+		return roles;
+	}
+	/**
+	 * @param roles the roles to set
+	 */
+	public void setRoles(List<Role> roles) {
+		this.roles = roles;
+	}
+	/**
 	 * @param id the id to set
 	 */
 	public void setId(long id) {
@@ -46,27 +82,16 @@ public class Usuario implements Serializable{
 	/**
 	 * @return the nombre
 	 */
-	public String getNombre() {
-		return nombre;
+	public String getUsername() {
+		return username;
 	}
 	/**
 	 * @param nombre the nombre to set
 	 */
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
+	public void setUsername(String nombre) {
+		this.username = nombre;
 	}
-	/**
-	 * @return the categoria
-	 */
-	public String getCategoria() {
-		return categoria;
-	}
-	/**
-	 * @param categoria the categoria to set
-	 */
-	public void setCategoria(String categoria) {
-		this.categoria = categoria;
-	}
+	
 	/**
 	 * @return the email
 	 */
@@ -82,14 +107,14 @@ public class Usuario implements Serializable{
 	/**
 	 * @return the pass
 	 */
-	public String getPass() {
-		return pass;
+	public String getPassword() {
+		return password;
 	}
 	/**
 	 * @param pass the pass to set
 	 */
-	public void setPass(String pass) {
-		this.pass = pass;
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	
 	/**

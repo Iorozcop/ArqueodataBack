@@ -9,6 +9,9 @@ public interface IUsuarioService {
 	//muestra todos los usuarios
 	public List<Usuario> findAll();
 	
+	//busca por nombre de usuario
+	public Usuario findByUsername(String username);
+	
 	//busca usuario por id
 	public Usuario findById(Long id);
 	
@@ -18,5 +21,6 @@ public interface IUsuarioService {
 	//elimina usuario
 	public void delete(Long id);
 	
+
 	
 }

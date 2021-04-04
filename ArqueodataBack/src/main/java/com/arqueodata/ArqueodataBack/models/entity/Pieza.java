@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+
 @Entity
 @Table (name="piezas")
 public class Pieza implements Serializable{
@@ -26,13 +27,13 @@ public class Pieza implements Serializable{
 	private String util;
 	
 	@Column(nullable = false)
-	private Number coordenadasX;
+	private int coordenadasX;
 	
 	@Column(nullable = false)
-	private Number coordenadasY;
+	private int coordenadasY;
 	
 	@Column(nullable = false)
-	private Number coordenadasZ;
+	private int coordenadasZ;
 	
 	@Column(nullable = false)
 	private String zona;
@@ -113,7 +114,7 @@ public class Pieza implements Serializable{
 	/**
 	 * @return the coordenadasX
 	 */
-	public Number getCoordenadasX() {
+	public int getCoordenadasX() {
 		return coordenadasX;
 	}
 
@@ -121,7 +122,7 @@ public class Pieza implements Serializable{
 	/**
 	 * @param coordenadasX the coordenadasX to set
 	 */
-	public void setCoordenadasX(Number coordenadasX) {
+	public void setCoordenadasX(int coordenadasX) {
 		this.coordenadasX = coordenadasX;
 	}
 
@@ -129,7 +130,7 @@ public class Pieza implements Serializable{
 	/**
 	 * @return the coordenadasY
 	 */
-	public Number getCoordenadasY() {
+	public int getCoordenadasY() {
 		return coordenadasY;
 	}
 
@@ -137,7 +138,7 @@ public class Pieza implements Serializable{
 	/**
 	 * @param coordenadasY the coordenadasY to set
 	 */
-	public void setCoordenadasY(Number coordenadasY) {
+	public void setCoordenadasY(int coordenadasY) {
 		this.coordenadasY = coordenadasY;
 	}
 
@@ -145,7 +146,7 @@ public class Pieza implements Serializable{
 	/**
 	 * @return the coordenadasZ
 	 */
-	public Number getCoordenadasZ() {
+	public int getCoordenadasZ() {
 		return coordenadasZ;
 	}
 
@@ -153,7 +154,7 @@ public class Pieza implements Serializable{
 	/**
 	 * @param coordenadasZ the coordenadasZ to set
 	 */
-	public void setCoordenadasZ(Number coordenadasZ) {
+	public void setCoordenadasZ(int coordenadasZ) {
 		this.coordenadasZ = coordenadasZ;
 	}
 
