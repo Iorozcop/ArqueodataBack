@@ -10,45 +10,55 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table (name="campains")
-public class Campain implements Serializable{
-	
+@Table(name="roles")
+public class Role implements Serializable{
+
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false,unique = true)
-	private int campain;
+	@Column(unique=true, length=20)
+	private String nombre;
 	
-	//GETTER AND SETTER
+	
+	//GETTER ANDS SETTER
+
 	/**
 	 * @return the id
 	 */
 	public Long getId() {
 		return id;
 	}
+
+
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
+
+
+
 	/**
-	 * @return the campain
+	 * @return the email
 	 */
-	public int getCampain() {
-		return campain;
+	public String getNombre() {
+		return nombre;
 	}
+
+
 	/**
-	 * @param campain the campain to set
+	 * @param email the email to set
 	 */
-	public void setCampain(int campain) {
-		this.campain = campain;
-		
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
-	
+
+
 	/**
 	 * SERIALIZABLE
 	 */
 	private static final long serialVersionUID = 1L;
 }
+
