@@ -30,15 +30,12 @@ public class Role implements Serializable{
 		return id;
 	}
 
-
 	/**
 	 * @param id the id to set
 	 */
 	public void setId(Long id) {
 		this.id = id;
 	}
-
-
 
 	/**
 	 * @return the email
@@ -47,14 +44,12 @@ public class Role implements Serializable{
 		return nombre;
 	}
 
-
 	/**
 	 * @param email the email to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 
 	/**
 	 * SERIALIZABLE

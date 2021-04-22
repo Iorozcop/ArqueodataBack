@@ -86,6 +86,7 @@ public class UsuarioRestController {
 	/* CREA USUARIO */
 	
 	@PostMapping("/usuarios")
+
 	public ResponseEntity<?> create(@RequestBody Usuario usuario){
 		
 		String passBcrypt = passwordEncoder.encode(usuario.getPassword());
@@ -170,7 +171,7 @@ public class UsuarioRestController {
 		response.put("mensaje", "El usuario ha sido eliminado con éxito");
 		
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.OK);
+
 	}
-	
 	
 }

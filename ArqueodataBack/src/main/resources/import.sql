@@ -1,3 +1,4 @@
+
 INSERT INTO campains (id,campain) VALUES (1,2012);
 INSERT INTO campains (id,campain) VALUES (2,2013);
 INSERT INTO campains (id,campain) VALUES (3,2014);
@@ -7,6 +8,7 @@ INSERT INTO yacimientos (id,nombre,lugar,epoca) VALUES (1,'Bastida', 'Totana, Mu
 INSERT INTO yacimientos (id,nombre,lugar,epoca) VALUES (2,'Almoloya', 'Mula, Murcia','Argárica');
 INSERT INTO yacimientos (id,nombre,lugar,epoca) VALUES (3,'Baeloclaudia', 'Bolonia, Cádiz','Romana');
 INSERT INTO yacimientos (id,nombre,lugar,epoca) VALUES (4,'Itálica', 'Santiponce, Sevilla','Romana');
+
 
 INSERT INTO usuarios (username,email,password,enabled) VALUES ('Pepe','pepe@gmail.com','$2a$10$RKi9AN48ir99g5LkkAU2huyyBugwmnXhGqwz4x.Qv.YfvYFTbPlSi',1);
 INSERT INTO usuarios (username,email,password,enabled) VALUES ('Juan','juan@gmail.com','$2a$10$L9bNwFbWr7tNnvliU.YqpOmndShu6GqmbEfMgDlX1e5DH5QboMUoG',1);
@@ -27,6 +29,7 @@ INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,co
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (4,2,'2014-08-03','metal','flecha',44445555,1234,1234,'H09','bien conservado','','');
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (1,3,'2014-08-04','hueso','punzon',2344656,1234,44445555,'H08','mal conservado','','');
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (1,4,'2014-08-04','metal','alabarda',2344656,1234,44445555,'H08','mal conservado','','');
+
 
 
 

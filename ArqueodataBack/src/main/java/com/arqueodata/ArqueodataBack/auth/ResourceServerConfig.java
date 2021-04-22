@@ -23,6 +23,7 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		//todo lo que sea permitido para ambos roles va a aquí
+
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/api/usuarios","/api/usuarios/{id}",
 			"/api/piezas/yacimientos/{id}","/api/piezas/campains/{id}").permitAll()
