@@ -8,6 +8,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+
 @SpringBootApplication
 public class ArqueodataBackApplication implements CommandLineRunner {
 
@@ -21,12 +22,14 @@ public class ArqueodataBackApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 		//vamos a meter contraseñas encriptadas antes de que inicie la app
-		String pass = "12345";
-		
-		for(int i = 0; i<4; i++) {
-			String passBcrypt = passwordEncoder.encode(pass);
-			System.out.println(passBcrypt);
-		}
+
+//		String pass = "12345";
+//		
+//		for(int i = 0; i<4; i++) {
+//			String passBcrypt = passwordEncoder.encode(pass);
+//			System.out.println(passBcrypt);
+//		}
+
 	}
 
 

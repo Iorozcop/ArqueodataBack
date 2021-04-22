@@ -22,14 +22,13 @@ public class Role implements Serializable{
 	
 	
 	//GETTER ANDS SETTER
-	
+
 	/**
 	 * @return the id
 	 */
 	public Long getId() {
 		return id;
 	}
-
 
 	/**
 	 * @param id the id to set
@@ -38,8 +37,6 @@ public class Role implements Serializable{
 		this.id = id;
 	}
 
-
-
 	/**
 	 * @return the email
 	 */
@@ -47,16 +44,12 @@ public class Role implements Serializable{
 		return nombre;
 	}
 
-
-
 	/**
 	 * @param email the email to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
-
 
 	/**
 	 * SERIALIZABLE

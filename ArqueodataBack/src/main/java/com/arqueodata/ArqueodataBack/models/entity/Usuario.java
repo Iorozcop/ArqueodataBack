@@ -35,6 +35,7 @@ public class Usuario implements Serializable {
 	
 	private Boolean enabled;
 	
+
 	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinTable(name="usuarios_roles", joinColumns= @JoinColumn(name = "usuario_id")
 	, inverseJoinColumns= @JoinColumn(name = "role_id"),
@@ -43,12 +44,21 @@ public class Usuario implements Serializable {
 	
 	
 	//GETTER AND SETTER
+	
 	/**
 	 * @return the id
 	 */
-	public long getId() {
-		return id;
+	public Long getId() {
+		return this.id;
 	}
+	
+	/**
+	 * @return the enabled
+	 */
+	public Boolean getEnabled() {
+		return enabled;
+	}
+	
 	/**
 	 * @return the enabled
 	 */
@@ -73,18 +83,20 @@ public class Usuario implements Serializable {
 	public void setRoles(List<Role> roles) {
 		this.roles = roles;
 	}
-	/**
-	 * @param id the id to set
-	 */
-	public void setId(long id) {
-		this.id = id;
-	}
+	
 	/**
 	 * @return the nombre
 	 */
 	public String getUsername() {
 		return username;
 	}
+	/**
+	 * @param nombre the nombre to set
+	 */
+	public void setUsername(String nombre) {
+		this.username = nombre;
+	}
+	
 	/**
 	 * @param nombre the nombre to set
 	 */
@@ -122,6 +134,4 @@ public class Usuario implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	
-
 }

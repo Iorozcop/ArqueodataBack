@@ -23,8 +23,23 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
 		//todo lo que sea permitido para ambos roles va a aquí
-		http.authorizeRequests().antMatchers(HttpMethod.GET, "/api/usuarios","api/piezas").permitAll()
-//		.antMatchers(HttpMethod.GET, "/api/usuarios/{id}").hasRole("ADMIN")
+
+		http.authorizeRequests()
+		.antMatchers(HttpMethod.GET, "/api/usuarios","/api/usuarios/{id}",
+			"/api/piezas/yacimientos/{id}","/api/piezas/campains/{id}").permitAll()
+		.antMatchers(HttpMethod.GET, "/api/piezas","/api/piezas/campains",
+			"/api/piezas/yacimientos","/api/uploads/img/**","/images/**").permitAll()
+		.antMatchers(HttpMethod.PUT, "/api/usuarios/{id}","/api/piezas/yacimientos/{id}",
+			"/api/piezas/campains/{id}","/api/piezas/{id}").permitAll()
+		.antMatchers(HttpMethod.POST, "/api/usuarios").permitAll()
+		.antMatchers(HttpMethod.POST, "/api/piezas").permitAll()
+		.antMatchers(HttpMethod.POST, "/api/piezas/upload").permitAll()
+		.antMatchers(HttpMethod.POST, "/api/piezas/yacimientos").permitAll()
+		.antMatchers(HttpMethod.POST, "/api/piezas/campains").permitAll()
+		.antMatchers(HttpMethod.DELETE, "/api/usuarios/{id}").hasRole("ADMIN")
+		.antMatchers(HttpMethod.DELETE, "/api/piezas/campains/{id}").hasRole("ADMIN")
+		.antMatchers(HttpMethod.DELETE, "/api/piezas/yacimientos/{id}").hasRole("ADMIN")
+		.antMatchers(HttpMethod.DELETE, "/api/piezas/{id}").hasRole("ADMIN")
 		.anyRequest().authenticated()
 		.and().cors().configurationSource(corsConfigurationSource());
 	}
