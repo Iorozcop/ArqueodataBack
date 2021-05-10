@@ -13,9 +13,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-
 
 
 @Entity
@@ -26,16 +27,16 @@ public class Pieza implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@Column(nullable = false)
+	@NotNull(message="Debe introducir una fecha")
 	private Date fecha;
 	
-	@NotNull(message="el yacimiento no puede estar vacío")
+	@NotNull(message="El yacimiento no puede estar vacío")
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="yacimiento_id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})//para ignorar al generar el json unos atributos que se crean por defecto con el FetchType.LAZY
 	private Yacimiento yacimiento;
 	
-	@NotNull(message="la campaña no puede estar vacía")
+	@NotNull(message="La campaña no puede estar vacía")
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="campain_id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -45,15 +46,23 @@ public class Pieza implements Serializable{
 	 
 	private String util;
 	
+	@NotNull(message="Las coordenadas no pueden estar vacías")
 	@Column(nullable = false)
-	private int coordenadasX;
+	private Long coordenadasX;
 	
+
+	@NotNull(message="Las coordenadas no pueden estar vacías")
 	@Column(nullable = false)
-	private int coordenadasY;
+	private Long coordenadasY;
 	
+
+	@NotNull(message="Las coordenadas no pueden estar vacías")
 	@Column(nullable = false)
-	private int coordenadasZ;
+	private Long coordenadasZ;
 	
+	@NotNull
+	@Size(min=3, max=10)
+	@Pattern(regexp = "[A-Z]{1}[0-9]{2}", message="La zona debe tener un patrón de mayúscula seguido de número")
 	@Column(nullable = false)
 	private String zona;
 	 
@@ -62,7 +71,6 @@ public class Pieza implements Serializable{
 	private String observaciones;
 	 
 	private String foto;
-	
 	
 
 	 //GETTER AND SETTER
@@ -154,42 +162,42 @@ public class Pieza implements Serializable{
 	/**
 	 * @return the coordenadasX
 	 */
-	public int getCoordenadasX() {
+	public Long getCoordenadasX() {
 		return coordenadasX;
 	}
 
 	/**
 	 * @param coordenadasX the coordenadasX to set
 	 */
-	public void setCoordenadasX(int coordenadasX) {
+	public void setCoordenadasX(Long coordenadasX) {
 		this.coordenadasX = coordenadasX;
 	}
 
 	/**
 	 * @return the coordenadasY
 	 */
-	public int getCoordenadasY() {
+	public Long getCoordenadasY() {
 		return coordenadasY;
 	}
 
 	/**
 	 * @param coordenadasY the coordenadasY to set
 	 */
-	public void setCoordenadasY(int coordenadasY) {
+	public void setCoordenadasY(Long coordenadasY) {
 		this.coordenadasY = coordenadasY;
 	}
 
 	/**
 	 * @return the coordenadasZ
 	 */
-	public int getCoordenadasZ() {
+	public Long getCoordenadasZ() {
 		return coordenadasZ;
 	}
 
 	/**
 	 * @param coordenadasZ the coordenadasZ to set
 	 */
-	public void setCoordenadasZ(int coordenadasZ) {
+	public void setCoordenadasZ(Long coordenadasZ) {
 		this.coordenadasZ = coordenadasZ;
 	}
 

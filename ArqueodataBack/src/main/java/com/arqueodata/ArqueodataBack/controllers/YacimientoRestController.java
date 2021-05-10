@@ -1,13 +1,20 @@
 package com.arqueodata.ArqueodataBack.controllers;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +25,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.arqueodata.ArqueodataBack.models.entity.Campain;
 import com.arqueodata.ArqueodataBack.models.entity.Yacimiento;
 import com.arqueodata.ArqueodataBack.models.services.IYacimientoService;
 
@@ -34,6 +42,11 @@ public class YacimientoRestController {
 	@GetMapping("/piezas/yacimientos")
 	public List<Yacimiento> index(){
 		return yacimientoService.findAll();
+	}
+	
+	@GetMapping("/piezas/yacimientos/page/{page}")
+	public Page<Yacimiento> index(@PathVariable Integer page){
+		return yacimientoService.findAll(PageRequest.of(page, 4));
 	}
 	
 	/*BUSCA POR ID*/
@@ -64,9 +77,20 @@ public class YacimientoRestController {
 	/* CREA YACIMIENTO */
 	
 	@PostMapping("/piezas/yacimientos")
-	public ResponseEntity<?> create(@RequestBody Yacimiento yacimiento){
+	public ResponseEntity<?> create(@Valid @RequestBody Yacimiento yacimiento, BindingResult result){
 		Map<String, Object> response = new HashMap<>();
 		Yacimiento nuevoYacimiento = null;
+		
+		if(result.hasErrors()) {
+			
+			List<String> errors= new ArrayList<>();
+			for(FieldError err: result.getFieldErrors()) {
+				errors.add("El campo " + err.getField() + " " + err.getDefaultMessage());
+			}
+			
+			response.put("errors", errors);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+		}
 		
 		try {
 			
@@ -88,7 +112,7 @@ public class YacimientoRestController {
 	/* EDITA YACIMIENTO */
 	
 	@PutMapping("/piezas/yacimientos/{id}")
-	public ResponseEntity<?> update(@RequestBody Yacimiento yacimiento, @PathVariable Long id) {
+	public ResponseEntity<?> update(@Valid @RequestBody Yacimiento yacimiento, @PathVariable Long id, BindingResult result) {
 		Yacimiento yacimientoBBDD = yacimientoService.findById(id);
 		Yacimiento yacimientoEditado = null;
 		Map<String, Object> response = new HashMap<>();
@@ -96,6 +120,17 @@ public class YacimientoRestController {
 		if(yacimientoBBDD == null) {
 			response.put("mensaje", "Error: no se puede editar, el yacimiento con ID: ".concat(id.toString().concat(" no existe en la BBDD")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		
+		if(result.hasErrors()) {
+			
+			List<String> errors= new ArrayList<>();
+			for(FieldError err: result.getFieldErrors()) {
+				errors.add("El campo " + err.getField() + " " + err.getDefaultMessage());
+			}
+			
+			response.put("errors", errors);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
 		
 		try {

@@ -8,6 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
 @Table (name="campains")
@@ -17,6 +18,7 @@ public class Campain implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull(message="La campaña no puede estar vacía")
 	@Column(nullable = false,unique = true)
 	private int campain;
 	

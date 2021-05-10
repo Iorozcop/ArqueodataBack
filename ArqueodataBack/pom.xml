@@ -78,6 +78,21 @@
 		    <artifactId>jaxb-runtime</artifactId>
 		</dependency>
 		
+		<!-- para las busquedas 
+		https://mvnrepository.com/artifact/org.hibernate/hibernate-jpamodelgen 
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-jpamodelgen</artifactId>
+		</dependency>-->
+			
+		<!-- Utilizamos solo esta dependencia de este generador de codigo, para los criterios de busqueda 
+		<dependency>
+		    <groupId>io.github.jhipster</groupId>
+		    <artifactId>jhipster-framework</artifactId>
+		    <version>3.0.7</version>
+		</dependency>-->
+			
+	
 	</dependencies>
 
 	<build>

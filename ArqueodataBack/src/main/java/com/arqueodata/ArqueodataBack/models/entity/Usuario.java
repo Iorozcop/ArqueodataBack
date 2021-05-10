@@ -15,6 +15,9 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table (name="usuarios")
@@ -24,19 +27,24 @@ public class Usuario implements Serializable {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull
+	@Size(min=2, max=15, message="debe tener un tamaño entre 2 y 15 caracteres")
 	@Column(nullable = false,unique = true, length=20)
 	private String username;
 	
+	@NotNull(message="no puede estar vacío")
+	@Email
 	@Column(nullable = false)
 	private String email;
 	
+	@NotNull(message="no puede estar vacío")
 	@Column(length=60)
 	private String password;
 	
 	private Boolean enabled;
 	
-	
-	@ManyToMany(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+
+	@ManyToMany(fetch=FetchType.LAZY)
 	@JoinTable(name="usuarios_roles", joinColumns= @JoinColumn(name = "usuario_id")
 	, inverseJoinColumns= @JoinColumn(name = "role_id"),
 	uniqueConstraints = {@UniqueConstraint(columnNames = {"usuario_id", "role_id"})})

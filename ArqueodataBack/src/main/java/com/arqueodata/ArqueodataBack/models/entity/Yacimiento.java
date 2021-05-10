@@ -8,6 +8,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 @Table (name="yacimientos")
@@ -17,13 +19,16 @@ public class Yacimiento implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	@NotNull(message="El nombre no puede estar vacío")
+	@Size(min=2, max=30)
 	@Column(nullable = false, unique = true)
 	private String nombre;
 	
+	@NotNull(message="El lugar no puede estar vacío")
+	@Size(min=2, max=30)
 	@Column(nullable = false)
 	private String lugar;
 	
-	@Column(nullable = false)
 	private String epoca;
 	
 	//GETTER AND SETTER

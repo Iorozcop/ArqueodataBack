@@ -5,11 +5,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -46,6 +52,11 @@ public class UsuarioRestController {
 	@GetMapping("/usuarios")
 	public List<Usuario> index(){
 		return usuarioService.findAll();
+	}
+	
+	@GetMapping("/usuarios/page/{page}")
+	public Page<Usuario> index(@PathVariable Integer page){
+		return usuarioService.findAll(PageRequest.of(page, 4));
 	}
 	
 	/* BUSCA POR ID */
@@ -86,7 +97,20 @@ public class UsuarioRestController {
 	/* CREA USUARIO */
 	
 	@PostMapping("/usuarios")
-	public ResponseEntity<?> create(@RequestBody Usuario usuario){
+	public ResponseEntity<?> create(@Valid @RequestBody Usuario usuario, BindingResult result){
+		Usuario nuevoUsuario = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		if(result.hasErrors()) {
+			
+			List<String> errors= new ArrayList<>();
+			for(FieldError err: result.getFieldErrors()) {
+				errors.add("El campo " + err.getField() + " " + err.getDefaultMessage());
+			}
+			
+			response.put("errors", errors);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
+		}
 		
 		String passBcrypt = passwordEncoder.encode(usuario.getPassword());
 		Role role = roleService.findByNombre("ROLE_USER");
@@ -95,10 +119,7 @@ public class UsuarioRestController {
 		usuario.setRoles(roles);
 		usuario.setEnabled(true);
 		usuario.setPassword(passBcrypt);
-		
-		Usuario nuevoUsuario = null;
-		Map<String, Object> response = new HashMap<>();
-		
+
 		try {
 			
 			nuevoUsuario = usuarioService.save(usuario);
@@ -119,7 +140,7 @@ public class UsuarioRestController {
 	/* EDITA USUARIO */
 	
 	@PutMapping("/usuarios/{id}")
-	public ResponseEntity<?> update(@RequestBody Usuario usuario, @PathVariable Long id) {
+	public ResponseEntity<?> update(@Valid @RequestBody Usuario usuario, @PathVariable Long id, BindingResult result) {
 		
 		Usuario usuarioBBDD = usuarioService.findById(id);
 		Usuario usuarioEditado = null;
@@ -128,6 +149,17 @@ public class UsuarioRestController {
 		if(usuarioBBDD == null) {
 			response.put("mensaje", "Error: no se puede editar, el usuario con ID: ".concat(id.toString().concat(" no existe en la BBDD")));
 			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.NOT_FOUND);
+		}
+		
+		if(result.hasErrors()) {
+			
+			List<String> errors= new ArrayList<>();
+			for(FieldError err: result.getFieldErrors()) {
+				errors.add("El campo " + err.getField() + " " + err.getDefaultMessage());
+			}
+			
+			response.put("errors", errors);
+			return new ResponseEntity<Map<String, Object>>(response, HttpStatus.BAD_REQUEST);
 		}
 		
 		try {
