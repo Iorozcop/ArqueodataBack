@@ -202,7 +202,7 @@ public class UsuarioRestController {
 		response.put("mensaje", "El usuario ha sido eliminado con éxito");
 		
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.OK);
+
 	}
-	
 	
 }

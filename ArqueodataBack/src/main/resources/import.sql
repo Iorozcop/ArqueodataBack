@@ -1,3 +1,4 @@
+
 INSERT INTO campains (id,campain) VALUES (1,2012);
 INSERT INTO campains (id,campain) VALUES (2,2013);
 INSERT INTO campains (id,campain) VALUES (3,2014);
@@ -18,6 +19,7 @@ INSERT INTO yacimientos (id,nombre,lugar,epoca) VALUES (7,'Asta Regia', 'Jerez, 
 INSERT INTO yacimientos (id,nombre,lugar,epoca) VALUES (8,'Dolmen de la pastora', 'Valencina, Sevilla','2000-AC');
 INSERT INTO yacimientos (id,nombre,lugar,epoca) VALUES (9,'Tira del lienzo', 'Totana, Murcia','Argárica');
 INSERT INTO yacimientos (id,nombre,lugar,epoca) VALUES (10,'Dolmen de menga', 'Antequera, Málaga','2000-AC');
+
 
 INSERT INTO usuarios (username,email,password,enabled) VALUES ('Pepe','pepe@gmail.com','$2a$10$RKi9AN48ir99g5LkkAU2huyyBugwmnXhGqwz4x.Qv.YfvYFTbPlSi',1);
 INSERT INTO usuarios (username,email,password,enabled) VALUES ('Juan','juan@gmail.com','$2a$10$L9bNwFbWr7tNnvliU.YqpOmndShu6GqmbEfMgDlX1e5DH5QboMUoG',1);
@@ -56,6 +58,7 @@ INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,co
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (6,4,'2014-08-04','cerámica','cuenco',27774656,4488884,4222222,'H07','muy bien conservado','Tenía restos de grano.Presenta pequeña rotura en la base.Formaba parte del ajuar funerario femenino','');
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (8,4,'2014-08-04','cerámica','cuenco',2774656,12388884,6668855,'H02','mal conservado','Tenía restos de grano','');
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (7,4,'2014-08-04','cerámica','cuenco',666444656,12367,666688855,'H13','bien conservado','','');
+
 
 
 

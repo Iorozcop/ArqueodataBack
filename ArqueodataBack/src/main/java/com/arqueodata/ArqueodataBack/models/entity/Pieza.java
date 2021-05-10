@@ -18,7 +18,6 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-
 @Entity
 @Table (name="piezas")
 public class Pieza implements Serializable{
