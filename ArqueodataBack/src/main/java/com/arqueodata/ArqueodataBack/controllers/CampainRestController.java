@@ -28,7 +28,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.arqueodata.ArqueodataBack.models.entity.Campain;
 import com.arqueodata.ArqueodataBack.models.services.ICampainService;
 
-
 @CrossOrigin(origins= {"http://localhost:4200"})
 @RestController
 @RequestMapping("/api")
