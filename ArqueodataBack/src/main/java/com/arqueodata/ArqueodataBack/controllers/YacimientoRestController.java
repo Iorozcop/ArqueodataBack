@@ -112,7 +112,7 @@ public class YacimientoRestController {
 	/* EDITA YACIMIENTO */
 	
 	@PutMapping("/piezas/yacimientos/{id}")
-	public ResponseEntity<?> update(@Valid @RequestBody Yacimiento yacimiento, @PathVariable Long id, BindingResult result) {
+	public ResponseEntity<?> update(@Valid @RequestBody Yacimiento yacimiento, BindingResult result, @PathVariable Long id) {
 		Yacimiento yacimientoBBDD = yacimientoService.findById(id);
 		Yacimiento yacimientoEditado = null;
 		Map<String, Object> response = new HashMap<>();

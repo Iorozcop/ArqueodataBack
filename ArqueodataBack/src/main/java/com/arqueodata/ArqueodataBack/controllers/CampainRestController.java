@@ -113,7 +113,7 @@ public class CampainRestController {
 	/* EDITA CAMPAÑA */
 	
 	@PutMapping("/piezas/campains/{id}")
-	public ResponseEntity<?> update(@Valid @RequestBody Campain campain, @PathVariable Long id, BindingResult result) {
+	public ResponseEntity<?> update(@Valid @RequestBody Campain campain, BindingResult result, @PathVariable Long id) {
 		Campain campainBBDD = campainService.findById(id);
 		Campain campainEditada = null;
 		Map<String, Object> response = new HashMap<>();

@@ -27,6 +27,4 @@ public interface IUsuarioService {
 	//elimina usuario
 	public void delete(Long id);
 	
-
-	
 }

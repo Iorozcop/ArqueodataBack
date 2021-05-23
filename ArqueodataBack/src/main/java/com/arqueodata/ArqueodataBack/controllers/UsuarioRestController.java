@@ -56,7 +56,7 @@ public class UsuarioRestController {
 	
 	@GetMapping("/usuarios/page/{page}")
 	public Page<Usuario> index(@PathVariable Integer page){
-		return usuarioService.findAll(PageRequest.of(page, 4));
+		return usuarioService.findAll(PageRequest.of(page, 5));
 	}
 	
 	/* BUSCA POR ID */
@@ -140,7 +140,7 @@ public class UsuarioRestController {
 	/* EDITA USUARIO */
 	
 	@PutMapping("/usuarios/{id}")
-	public ResponseEntity<?> update(@Valid @RequestBody Usuario usuario, @PathVariable Long id, BindingResult result) {
+	public ResponseEntity<?> update(@Valid @RequestBody Usuario usuario, BindingResult result, @PathVariable Long id) {
 		
 		Usuario usuarioBBDD = usuarioService.findById(id);
 		Usuario usuarioEditado = null;
@@ -163,10 +163,12 @@ public class UsuarioRestController {
 		}
 		
 		try {
-		
+			
 			usuarioBBDD.setEmail(usuario.getEmail());
 			usuarioBBDD.setUsername(usuario.getUsername());
 			usuarioBBDD.setRoles(usuario.getRoles());
+			String passBcrypt = passwordEncoder.encode(usuario.getPassword());
+			usuarioBBDD.setPassword(passBcrypt);
 			
 			usuarioEditado = usuarioService.save(usuarioBBDD);
 		

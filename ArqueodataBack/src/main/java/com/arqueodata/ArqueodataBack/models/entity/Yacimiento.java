@@ -19,13 +19,13 @@ public class Yacimiento implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull(message="El nombre no puede estar vacío")
-	@Size(min=2, max=30)
+	@NotNull(message=" no puede estar vacío")
+	@Size(min=2, max=30 , message=" debe tener entre 2 y 30 caracteres")
 	@Column(nullable = false, unique = true)
 	private String nombre;
 	
-	@NotNull(message="El lugar no puede estar vacío")
-	@Size(min=2, max=30)
+	@NotNull(message=" no puede estar vacío")
+	@Size(min=2, max=30, message=" debe tener entre 2 y 30 caracteres")
 	@Column(nullable = false)
 	private String lugar;
 	

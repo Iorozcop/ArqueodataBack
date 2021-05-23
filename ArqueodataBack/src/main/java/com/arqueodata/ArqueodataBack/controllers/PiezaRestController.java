@@ -108,7 +108,7 @@ public class PiezaRestController {
 		final Campain campain = pieza.getCampain();
 		final String material = pieza.getMaterial();
 		final String util = pieza.getUtil();
-				
+		
 		try {
 						
 			listaPiezas = piezaService.buscaPieza(pieza);
@@ -164,7 +164,7 @@ public class PiezaRestController {
 	// EDITA PIEZA
 	
 	@PutMapping("/piezas/{id}")
-	public ResponseEntity<?> update(@Valid @RequestBody Pieza pieza, @PathVariable Long id, BindingResult result) {
+	public ResponseEntity<?> update(@Valid @RequestBody Pieza pieza, BindingResult result, @PathVariable Long id) {
 		Pieza piezaBBDD = piezaService.findById(id);
 		Pieza piezaEditada = null;
 		Map<String, Object> response = new HashMap<>();

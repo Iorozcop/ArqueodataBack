@@ -18,7 +18,7 @@ public class Campain implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull(message="La campaña no puede estar vacía")
+	@NotNull(message=" no puede estar vacío")
 	@Column(nullable = false,unique = true)
 	private int campain;
 	

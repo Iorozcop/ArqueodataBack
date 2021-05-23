@@ -27,16 +27,16 @@ public class Pieza implements Serializable{
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
-	@NotNull(message="Debe introducir una fecha")
+	@NotNull(message=" no puede estar vacío")
 	private Date fecha;
 	
-	@NotNull(message="El yacimiento no puede estar vacío")
+	@NotNull(message=" no puede estar vacío")
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="yacimiento_id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})//para ignorar al generar el json unos atributos que se crean por defecto con el FetchType.LAZY
 	private Yacimiento yacimiento;
 	
-	@NotNull(message="La campaña no puede estar vacía")
+	@NotNull(message=" no puede estar vacío")
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="campain_id")
 	@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
@@ -46,23 +46,23 @@ public class Pieza implements Serializable{
 	 
 	private String util;
 	
-	@NotNull(message="Las coordenadas no pueden estar vacías")
+	@NotNull(message=" no puede estar vacío")
 	@Column(nullable = false)
 	private Long coordenadasX;
 	
 
-	@NotNull(message="Las coordenadas no pueden estar vacías")
+	@NotNull(message=" no puede estar vacío")
 	@Column(nullable = false)
 	private Long coordenadasY;
 	
 
-	@NotNull(message="Las coordenadas no pueden estar vacías")
+	@NotNull(message=" no puede estar vacío")
 	@Column(nullable = false)
 	private Long coordenadasZ;
 	
-	@NotNull
-	@Size(min=3, max=10)
-	@Pattern(regexp = "[A-Z]{1}[0-9]{2}", message="La zona debe tener un patrón de mayúscula seguido de número")
+	@NotNull(message=" no puede estar vacío")
+	@Size(min=3, max=10, message=" debe tener entre 3 y 10 caracteres")
+	@Pattern(regexp = "[A-Z]{1}[0-9]{2}", message=" debe tener un patrón de mayúscula seguido de dos números")
 	@Column(nullable = false)
 	private String zona;
 	 
