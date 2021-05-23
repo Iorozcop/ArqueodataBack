@@ -8,41 +8,43 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 
 @Entity
-@Table (name="capains")
+@Table (name="campains")
 public class Campain implements Serializable{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private long id;
+	private Long id;
 	
-	@Column(nullable = false)
-	private  Number campain;
+	@NotNull(message=" no puede estar vacío")
+	@Column(nullable = false,unique = true)
+	private int campain;
 	
 	//GETTER AND SETTER
 	/**
 	 * @return the id
 	 */
-	public long getId() {
+	public Long getId() {
 		return id;
 	}
 	/**
 	 * @param id the id to set
 	 */
-	public void setId(long id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	/**
 	 * @return the campain
 	 */
-	public Number getCampain() {
+	public int getCampain() {
 		return campain;
 	}
 	/**
 	 * @param campain the campain to set
 	 */
-	public void setCampain(Number campain) {
+	public void setCampain(int campain) {
 		this.campain = campain;
 		
 	}

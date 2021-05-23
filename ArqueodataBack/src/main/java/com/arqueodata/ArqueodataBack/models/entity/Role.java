@@ -22,7 +22,7 @@ public class Role implements Serializable{
 	
 	
 	//GETTER ANDS SETTER
-	
+
 	/**
 	 * @return the id
 	 */
@@ -48,14 +48,12 @@ public class Role implements Serializable{
 	}
 
 
-
 	/**
 	 * @param email the email to set
 	 */
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
-
 
 
 	/**
