@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.models.services;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -8,22 +13,50 @@ import com.arqueodata.ArqueodataBack.models.entity.Yacimiento;
 
 public interface IYacimientoService {
 
-	//muestra todos los yacimientos 
+	/**
+	 * Muestra todos los yacimientos 
+	 * 
+	 * @return
+	 */
 	public List<Yacimiento> findAll();
 	
-	//muestra todos los yacimientos con paginación
+	/**
+	 * Muestra todos los yacimientos con paginación
+	 * 
+	 * @param pageable
+	 * @return
+	 */
 	public Page<Yacimiento> findAll(Pageable pageable);
 	
-	//busca yacimiento por id
+	/**
+	 * Busca yacimiento por id
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public Yacimiento findById(Long id);
 
-	//guarda yacimiento
+	/**
+	 * Guarda yacimiento
+	 * 
+	 * @param yacimiento
+	 * @return
+	 */
 	public Yacimiento save(Yacimiento yacimiento);
 		
-	//elimina yacimiento
+	/**
+	 * Elimina yacimiento
+	 * 
+	 * @param id
+	 */
 	public void delete(Long id);
 	
-	//busca yacimiento por nombre
+	/**
+	 * Busca yacimiento por nombre
+	 * 
+	 * @param yacimiento
+	 * @return
+	 */
 	Yacimiento findByNombre(String yacimiento);
 	
 }

@@ -1,6 +1,10 @@
 package com.arqueodata.ArqueodataBack;
-
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -15,20 +19,18 @@ public class ArqueodataBackApplication implements CommandLineRunner {
 	@Autowired
 	private BCryptPasswordEncoder passwordEncoder;
 	
+	/**
+	 * Main
+	 * 
+	 * @param args
+	 */
 	public static void main(String[] args) {
 		SpringApplication.run(ArqueodataBackApplication.class, args);
 	}
 
 	@Override
 	public void run(String... args) throws Exception {
-		//vamos a meter contraseñas encriptadas antes de que inicie la app
-//		String pass = "12345";
-//		
-//		for(int i = 0; i<4; i++) {
-//			String passBcrypt = passwordEncoder.encode(pass);
-//			System.out.println(passBcrypt);
-//		}
-	}
 
+	}
 
 }

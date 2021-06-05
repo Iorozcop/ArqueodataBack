@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.controllers;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
@@ -49,7 +54,7 @@ import java.sql.Date;
 
 import java.text.SimpleDateFormat;
 
-@CrossOrigin(origins= {"http://localhost:4200"})
+@CrossOrigin(origins= {"http://localhost:4200","http://localhost:8449"})
 @RestController
 @RequestMapping("/api")
 public class PiezaRestController {

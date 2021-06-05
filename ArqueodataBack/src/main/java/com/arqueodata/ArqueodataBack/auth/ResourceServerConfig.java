@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.auth;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.Arrays;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
@@ -20,9 +25,11 @@ import org.springframework.web.filter.CorsFilter;
 @EnableResourceServer
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 
+	/**
+	 * Asigna permisos a las diferentes rutas
+	 */
 	@Override
 	public void configure(HttpSecurity http) throws Exception {
-		//todo lo que sea permitido para ambos roles va a aquí
 		http.authorizeRequests()
 		.antMatchers(HttpMethod.GET, "/api/usuarios","/api/usuarios/page/{page}","/api/usuarios/{id}",
 			"/api/piezas/yacimientos/{id}","/api/piezas/campains/{id}").hasRole("ADMIN")
@@ -40,10 +47,15 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		.and().cors().configurationSource(corsConfigurationSource());
 	}
 	
+	/**
+	 * Configura Cors
+	 * 
+	 * @return source
+	 */
 	@Bean
 	public CorsConfigurationSource corsConfigurationSource() {
 		CorsConfiguration config =  new CorsConfiguration();
-		config.setAllowedOrigins(Arrays.asList("http://localhost:4200"));
+		config.setAllowedOriginPatterns(Arrays.asList("http://localhost:4200","*"));
 		config.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE", "OPTIONS"));
 		config.setAllowCredentials(true);
 		config.setAllowedHeaders(Arrays.asList("Content-Type", "Authorization"));
@@ -51,15 +63,18 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter{
 		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
 		source.registerCorsConfiguration("/**", config);
 		return source;
-		
 	}
 	
+	/**
+	 * Genera filtro para cors
+	 * 
+	 * @return bean
+	 */
 	@Bean
 	public FilterRegistrationBean<CorsFilter> corsFilter(){
 		FilterRegistrationBean<CorsFilter> bean = new FilterRegistrationBean<CorsFilter>(new CorsFilter(corsConfigurationSource()));
 		bean.setOrder(Ordered.HIGHEST_PRECEDENCE);
 		return bean;
 	}
-	
 	
 }

@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.controllers;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -29,7 +34,7 @@ import com.arqueodata.ArqueodataBack.models.entity.Campain;
 import com.arqueodata.ArqueodataBack.models.entity.Yacimiento;
 import com.arqueodata.ArqueodataBack.models.services.IYacimientoService;
 
-@CrossOrigin(origins= {"http://localhost:4200"})
+@CrossOrigin(origins= {"http://localhost:4200","http://localhost:8449"})
 @RestController
 @RequestMapping("/api")
 public class YacimientoRestController {

@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.auth;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.Arrays;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,12 +36,18 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 	@Autowired
 	private InfoAdicionalToken infoAdicionalToken;
 
+	/**
+	 * Configura los permisos de los entpoint
+	 */
 	@Override
 	public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
 		security.tokenKeyAccess("permitAll()")
 		.checkTokenAccess("isAuthenticated()");
 	}
 
+	/**
+	 * Configura los clientes que harán uso de la API Rest
+	 */
 	@Override
 	public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
 	
@@ -47,7 +58,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		.accessTokenValiditySeconds(3600)
 		.refreshTokenValiditySeconds(3600);
 	}
-
+	
+	/**
+	 * Configura el endpoint que se encarga de autenticar el token
+	 */
 	@Override
 	public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
 		
@@ -59,18 +73,29 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 		.tokenEnhancer(tokenEnhancerChain);
 	}
 
+	/**
+	 * Crea tokenStore con la información del accessTokenConverter
+	 * 
+	 * @return
+	 */
 	@Bean
 	public JwtTokenStore tokenStore() {
 		return new JwtTokenStore(accessTokenConverter());
 	}
 
+	/**
+	 * Descodifica información del token
+	 * 
+	 * @return jwtAccessTokenConverter
+	 */
 	@Bean
 	public JwtAccessTokenConverter accessTokenConverter() {
 		JwtAccessTokenConverter jwtAccessTokenConverter = new JwtAccessTokenConverter();
-		jwtAccessTokenConverter.setSigningKey(JwtConfig.RSA_PRIVADA);//con esta firmamos el token
-		jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLICA);//y con esta clave pública validamos que el token sea autentico
+		//clave privada, firmamos el token
+		jwtAccessTokenConverter.setSigningKey(JwtConfig.RSA_PRIVADA);
+		//clave pública, validamos que el token sea autentico
+		jwtAccessTokenConverter.setVerifierKey(JwtConfig.RSA_PUBLICA);
 		return jwtAccessTokenConverter;
 	}
-	
 	
 }

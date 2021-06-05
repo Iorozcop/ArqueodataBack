@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.models.services;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,8 +24,6 @@ import com.arqueodata.ArqueodataBack.models.dao.IPiezaDao;
 import com.arqueodata.ArqueodataBack.models.entity.Campain;
 import com.arqueodata.ArqueodataBack.models.entity.Pieza;
 import com.arqueodata.ArqueodataBack.models.entity.Yacimiento;
-
-
 
 @Service
 public class PiezaServiceImp implements IPiezaService{
@@ -47,7 +50,6 @@ public class PiezaServiceImp implements IPiezaService{
 	@Override
 	@Transactional
 	public Pieza save(Pieza pieza) {
-		//devuelve la entidad guardada
 		return piezaDao.save(pieza);
 	}
 
@@ -75,7 +77,9 @@ public class PiezaServiceImp implements IPiezaService{
 		return piezaDao.findAllCampains();
 	}
 	
-	//Busca pieza por múltiples campos
+	/**
+	 * Busca pieza por múltiples campos
+	 */
 	public List<Pieza> buscaPieza(Pieza pieza){
 	
 		CriteriaBuilder cb = entityManager.getCriteriaBuilder();
@@ -109,7 +113,5 @@ public class PiezaServiceImp implements IPiezaService{
 		return entityManager.createQuery(cq).getResultList();
 		
 	}
-
-	
 
 }

@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.models.entity;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.io.Serializable;
 
 import javax.persistence.Column;
