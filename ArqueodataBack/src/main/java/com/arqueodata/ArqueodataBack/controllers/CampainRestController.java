@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.controllers;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -28,7 +33,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.arqueodata.ArqueodataBack.models.entity.Campain;
 import com.arqueodata.ArqueodataBack.models.services.ICampainService;
 
-@CrossOrigin(origins= {"http://localhost:4200"})
+@CrossOrigin(origins= {"http://localhost:4200","http://localhost:8449"})
 @RestController
 @RequestMapping("/api")
 public class CampainRestController {
@@ -36,20 +41,33 @@ public class CampainRestController {
 	@Autowired
 	private ICampainService campainService;
 	
-	/* TRAE TODAS LAS CAMPAÑAS */
-	
+	/**
+	 * TRAE TODAS LAS CAMPAÑAS
+	 * 
+	 * @return
+	 */
 	@GetMapping("/piezas/campains")
 	public List<Campain> index(){
 		return campainService.findAll();
 	}
 	
+	/**
+	 * TRAE TODAS LAS CAMPAÑAS
+	 * 
+	 * @param page
+	 * @return
+	 */
 	@GetMapping("/piezas/campains/page/{page}")
 	public Page<Campain> index(@PathVariable Integer page){
 		return campainService.findAll(PageRequest.of(page, 4));
 	}
 	
-	/* BUSCA POR ID */
-	
+	/**
+	 * BUSCA POR ID
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@GetMapping("/piezas/campains/{id}")
 	public ResponseEntity<?> show(@PathVariable Long id) {
 		Map<String, Object> response = new HashMap<>();
@@ -69,12 +87,15 @@ public class CampainRestController {
 		}
 		
 		return new ResponseEntity<Campain>(campain, HttpStatus.OK);
-		
 	}
 	
-	
-	/* CREA CAMPAÑA */
-	
+	/**
+	 * CREA CAMPAÑA
+	 * 
+	 * @param campain
+	 * @param result
+	 * @return
+	 */
 	@PostMapping("/piezas/campains")
 	public ResponseEntity<?> create(@Valid @RequestBody Campain campain, BindingResult result){
 		Map<String, Object> response = new HashMap<>();
@@ -108,9 +129,14 @@ public class CampainRestController {
 		
 	}
 	
-	
-	/* EDITA CAMPAÑA */
-	
+	/**
+	 *EDITA CAMPAÑA 
+	 *
+	 * @param campain
+	 * @param result
+	 * @param id
+	 * @return
+	 */
 	@PutMapping("/piezas/campains/{id}")
 	public ResponseEntity<?> update(@Valid @RequestBody Campain campain, BindingResult result, @PathVariable Long id) {
 		Campain campainBBDD = campainService.findById(id);
@@ -150,8 +176,12 @@ public class CampainRestController {
 		return new ResponseEntity<Map<String, Object>>(response,HttpStatus.CREATED);
 	}
 	
-	/* ELIMINA CAMAPAÑA */
-	
+	/**
+	 * ELIMINA CAMAPAÑA
+	 * 
+	 * @param id
+	 * @return
+	 */
 	@DeleteMapping("/piezas/campains/{id}")
 	public ResponseEntity<?> delete(@PathVariable Long id){
 		Map<String, Object> response = new HashMap<>();

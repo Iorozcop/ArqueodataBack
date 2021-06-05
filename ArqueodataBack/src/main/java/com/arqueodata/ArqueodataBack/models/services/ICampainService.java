@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.models.services;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -11,22 +16,50 @@ import com.arqueodata.ArqueodataBack.models.entity.Campain;
 
 public interface ICampainService {
 	
-	//muestra todos las campañas
+	/**
+	 * Muestra todos las campañas
+	 * 
+	 * @return
+	 */
     public List<Campain> findAll();
-    
-    //muestra todos las campañas con paginación
+
+    /**
+     * Muestra todos las campañas con paginación
+     * 
+     * @param pageable
+     * @return
+     */
   	public Page<Campain> findAll(Pageable pageable);
 	
-  	//muestra una campañas por id
+  	/**
+  	 * Muestra una campañas por id
+  	 * 
+  	 * @param id
+  	 * @return
+  	 */
 	public Campain findById(Long id);
 
-	//guarda campaña
+	/**
+	 * Guarda campaña
+	 * 
+	 * @param campain
+	 * @return
+	 */
 	public Campain save(Campain campain);
-	
-	//elimina campaña
+
+	/**
+	 * Elimina campaña
+	 * 
+	 * @param id
+	 */
 	public void delete(Long id);
 
-	//Busca campaña por campaña
+	/**
+	 * Busca campaña por campaña
+	 * 
+	 * @param campain
+	 * @return
+	 */
 	Campain findByCampain(int campain);
 
 }

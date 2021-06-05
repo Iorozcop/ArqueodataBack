@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.models.services;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.List;
 
 import org.springframework.data.domain.Page;
@@ -9,22 +14,50 @@ import com.arqueodata.ArqueodataBack.models.entity.Usuario;
 
 public interface IUsuarioService {
 
-	//muestra todos los usuarios
+	/**
+	 * Muestra todos los usuarios
+	 * 
+	 * @return
+	 */
 	public List<Usuario> findAll();
 	
-	//muestra todos los usuarios con paginación
+	/**
+	 * Muestra todos los usuarios con paginación
+	 * 
+	 * @param pageable
+	 * @return
+	 */
 	public Page<Usuario> findAll(Pageable pageable);
 	
-	//busca por nombre de usuario
+	/**
+	 * Busca por nombre de usuario
+	 * 
+	 * @param username
+	 * @return
+	 */
 	public Usuario findByUsername(String username);
 	
-	//busca usuario por id
+	/**
+	 * Busca usuario por id
+	 * 
+	 * @param id
+	 * @return
+	 */
 	public Usuario findById(Long id);
 	
-	//guarda usuario
+	/**
+	 * Guarda usuario
+	 * 
+	 * @param usuario
+	 * @return
+	 */
 	public Usuario save(Usuario usuario);
 	
-	//elimina usuario
+	/**
+	 * Elimina usuario
+	 * 
+	 * @param id
+	 */
 	public void delete(Long id);
 	
 }

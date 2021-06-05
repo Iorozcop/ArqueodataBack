@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.auth;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.HashMap;
 import java.util.Map;
 
@@ -19,6 +24,11 @@ public class InfoAdicionalToken implements TokenEnhancer {
 	@Autowired
 	private IUsuarioService usuarioService;
 
+	/**
+	 * Agrega información a accessToken para agregarla al token
+	 * 
+	 * @return accessToken
+	 */
 	@Override
 	public OAuth2AccessToken enhance(OAuth2AccessToken accessToken, OAuth2Authentication authentication) {
 		

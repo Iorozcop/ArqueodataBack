@@ -1,8 +1,19 @@
 package com.arqueodata.ArqueodataBack.auth;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 public class JwtConfig {
+	/**
+	 * Llave secreta para el token
+	 */
 	public static final String LLAVE_SECRETA = "alguna.clave.secreta.12345678";
 	
+	/**
+	 * Clave privada para firmar token
+	 */
 	public static final String RSA_PRIVADA = "-----BEGIN RSA PRIVATE KEY-----\r\n"
 			+ "MIIEpAIBAAKCAQEAwyyqpWNitY6+IxE1wbLJ+AhI+jiHEKutUgXEQQmuPQS1FjLm\r\n"
 			+ "fowFbBUIJZHUbFJx1beJvsbUma42KvN6keSn0P0sK3txZCvhKKx8/38H0+FUaS7v\r\n"
@@ -31,6 +42,9 @@ public class JwtConfig {
 			+ "SzzBjk9DpIump3dkMF7w3wa+vk8pGnYMKTrXcXgda1un6ut8b7BEjA==\r\n"
 			+ "-----END RSA PRIVATE KEY-----";
 	
+	/**
+	 * Clave pública para verifiar que el token es auténtico
+	 */
 	public static final String RSA_PUBLICA ="-----BEGIN PUBLIC KEY-----\r\n"
 			+ "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAwyyqpWNitY6+IxE1wbLJ\r\n"
 			+ "+AhI+jiHEKutUgXEQQmuPQS1FjLmfowFbBUIJZHUbFJx1beJvsbUma42KvN6keSn\r\n"

@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.models.services;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -24,7 +29,7 @@ import com.arqueodata.ArqueodataBack.models.entity.Usuario;
 @Service
 public class UsuarioServiceImp implements IUsuarioService, UserDetailsService{
 
-	//para registrar los errores
+	// Registra los errores
 	private Logger logger = LoggerFactory.getLogger(UsuarioServiceImp.class);
 	
 	@Autowired
@@ -49,7 +54,6 @@ public class UsuarioServiceImp implements IUsuarioService, UserDetailsService{
 		return usuarioDao.findById(id).orElse(null);
 	}
 		
-
 	@Override
 	@Transactional
 	public Usuario save(Usuario usuario) {
@@ -74,7 +78,6 @@ public class UsuarioServiceImp implements IUsuarioService, UserDetailsService{
 			throw new UsernameNotFoundException("Error al iniciar sesión. No existe el usuario '"+username+"' en la base de datos");
 		}
 		
-		//no es asincrono, no es reactivo, solo trabajamos con flujos de trabajo
 		List<GrantedAuthority> authorities = usuario.getRoles()
 				.stream()
 				.map(role -> new SimpleGrantedAuthority(role.getNombre()))
@@ -89,6 +92,5 @@ public class UsuarioServiceImp implements IUsuarioService, UserDetailsService{
 	public Usuario findByUsername(String username) {
 		return usuarioDao.findByUsername(username);
 	}
-
 
 }

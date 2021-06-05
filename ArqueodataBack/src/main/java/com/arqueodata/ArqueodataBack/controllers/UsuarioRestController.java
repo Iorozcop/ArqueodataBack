@@ -1,5 +1,10 @@
 package com.arqueodata.ArqueodataBack.controllers;
-
+/**
+ * Proyecto final.
+ * 
+ * @author Isabel Orozco Puerto
+ *
+ */
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -33,7 +38,7 @@ import com.arqueodata.ArqueodataBack.models.services.IRoleService;
 import com.arqueodata.ArqueodataBack.models.services.IUsuarioService;
 
 
-@CrossOrigin(origins= {"http://localhost:4200"})
+@CrossOrigin(origins= {"http://localhost:4200","http://localhost:8449"})
 @RestController
 @RequestMapping("/api")
 public class UsuarioRestController {
@@ -64,12 +69,13 @@ public class UsuarioRestController {
 	//ResponseEntity es una clase que propone spring para poder usarla en el manejo de errores
 	//Se pone el tipo de dato generico <?> porque puede llegarte un conjunto de errores, un string, 
 	//un objeto...etc. Es como el tipo any de typescript
+	
 	@GetMapping("/usuarios/{id}")
 	public ResponseEntity<?> show(@PathVariable Long id) {
 		
 		//creamos nuestro propio responseEntity para manejar el error
 		//creamos un map para tener un listado de errores asociados a un mensaje
-		//Map es la interfaz, HashMap la implementaciín
+		
 		Map<String, Object> response = new HashMap<>();
 		
 		Usuario usuario = null;

@@ -25,7 +25,7 @@ INSERT INTO yacimientos (id,nombre,lugar,epoca) VALUES (10,'Dolmen de menga', 'A
 INSERT INTO usuarios (username,email,password,enabled) VALUES ('Pepe','pepe@gmail.com','$2a$10$RKi9AN48ir99g5LkkAU2huyyBugwmnXhGqwz4x.Qv.YfvYFTbPlSi',1);
 INSERT INTO usuarios (username,email,password,enabled) VALUES ('Juan','juan@gmail.com','$2a$10$L9bNwFbWr7tNnvliU.YqpOmndShu6GqmbEfMgDlX1e5DH5QboMUoG',1);
 INSERT INTO usuarios (username,email,password,enabled) VALUES ('Paco','paco@gmail.com','$2a$10$PwASHdAO71MEnMx/fANwFu3wFDdl6CDicXFMcSde6MaiXmJsojZHm',1);
-INSERT INTO usuarios (username,email,password,enabled) VALUES ('Maria','maria@gmail.com','$2a$10$L1RNRdBi8DyS5IAd9DEH8eb5Jk.Uc3WNZN7ofAmDKRMj5oL3H70eW',1);
+INSERT INTO usuarios (username,email,password,enabled) VALUES ('María','maria@gmail.com','$2a$10$L1RNRdBi8DyS5IAd9DEH8eb5Jk.Uc3WNZN7ofAmDKRMj5oL3H70eW',1);
 INSERT INTO usuarios (username,email,password,enabled) VALUES ('Juana','Juana@gmail.com','$2a$10$uLNxXsJt5plJyZbTDx8CautSWoKqzlCtqre5c6S87w8l3zA4dmlCe',1);
 INSERT INTO usuarios (username,email,password,enabled) VALUES ('Curro','Curro@gmail.com','$2a$10$X3tqCMMzRg.FUAzL7a.haOgG1IvR2ccxe3VuYSKoZh12FingJVKrW',1);
 INSERT INTO usuarios (username,email,password,enabled) VALUES ('lolo','lolo@gmail.com','$2a$10$17AQ5Bwm9DTFxI9sKN4.2eYGsc2.3Vqb4Du/UirX0QgkciMEnfOn.',1);
@@ -51,7 +51,7 @@ INSERT INTO usuarios_roles (usuario_id, role_id) VALUES (10,1);
 
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (1,3,'2012-08-08','hueso','punzón',1234,1234,1234,'H15','bien conservado','La pieza se encuentra en muy buen estado de conservación','');
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (2,3,'2012-07-10','cerámica','cuenco',44445555,2344656,1234,'H17','mal conservado','Tenía restos de grano','');
-INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (3,3,'2012-08-03','cerámica','tinaja',1234,1234,44445555,'H09','bien conservado','Presenta pequeña rotura en la base','');
+INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (3,3,'2012-08-03','cerámica','tinaja',1234,1234,44445555,'H09','bien conservado','Presenta pequeñaa rotura en la base','');
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (4,3,'2012-08-03','metal','flecha',44445555,1234,1234,'H09','bien conservado','La pieza se encuentra bien conservada','');
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (5,3,'2012-08-04','hueso','punzón',2344656,1234,44445555,'H08','mal conservado','Se encontró fuera del hogar','');
 INSERT INTO piezas (yacimiento_id,campain_id,fecha,material,util,coordenadasX,coordenadasY,coordenadasZ,zona,estado,observaciones,foto) VALUES (5,3,'2012-08-04','metal','alabarda',2344656,1234,44445555,'H08','mal conservado','Formaba parte del ajuar funerario femenino','');
